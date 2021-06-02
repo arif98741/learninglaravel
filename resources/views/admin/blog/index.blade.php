@@ -22,6 +22,11 @@
 
     <!-- Main content -->
     <section class="content">
+        <div class="flash-message">
+            @include('admin.include.flash')
+
+        </div> <!-- end .flash-message -->
+
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
@@ -29,13 +34,35 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
+                            <th>Serial</th>
                             <th>Title</th>
                             <th>Description</th>
                             <th>Category</th>
                             <th>Image</th>
-                            <th>Description</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
+                        <tbody>
+                        @foreach($blogs as $key=> $blog)
+
+                            <tr>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ $blog->title }}</td>
+                                <td>{{ $blog->description }}</td>
+                                <td>{{ $blog->category->name }}</td>
+                                <td><img src="{{ $blog->image }}" alt=""></td>
+                                <td>
+
+                                    <a href="{{ route('admin.blog.edit',$blog->id) }}" class="btn btn-primary">Edit</a>
+                                    <form action="{{ route('admin.blog.destroy', $blog->id) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-warning" onclick="return(confirm('are you sure to delete?'))">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
