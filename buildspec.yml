@@ -5,8 +5,6 @@ phases:
          php: 7.3
          nodejs: 12.x
      commands:
-         - apt-get update
-         - apt-get install -y libpq-dev libzip-dev
          - apt-get install -y php7.3-{bcmath,bz2,intl,gd,mbstring,mysql,zip,common}
          - curl -sS <https://getcomposer.org/installer> | php -- --install-dir=/usr/local/bin --filename=composer
    pre_build:
