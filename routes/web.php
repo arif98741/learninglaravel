@@ -8,5 +8,9 @@ Route::group(['prefix' => 'admin','as'=>'admin.'], function () {
     Route::resource('/blog', 'Admin\BlogController');
 });
 
+Route::get('/', function(){
+    return "hello this laravel app ";
+});
+
 //Auth::routes();
 
