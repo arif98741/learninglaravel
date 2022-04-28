@@ -5,7 +5,6 @@ phases:
          php: 7.3
          nodejs: 12.x
      commands:
-         - curl -sS <https://getcomposer.org/installer> | php -- --install-dir=/usr/local/bin --filename=composer
    pre_build:
      commands:
          - cp .env.example .env
