@@ -1,19 +1,28 @@
-version: 2
-
+version: 0.2
 phases:
-  install:
-    runtime-versions:
-     php: php7.4-application 
-  pre_build:
-    commands:
-      - echo Nothing to do in the pre_build phase...
-  build:
-    commands:
-      - echo Build started on `date`
-      - mvn install
-  post_build:
-    commands:
-      - echo Build completed on `date`
+   install:
+     runtime-versions:
+         php: 7.4
+         nodejs: 12.x
+     commands:
+         - apt-get update -y
+         - apt-get install -y libpq-dev libzip-dev
+         - apt-get install -y php7.4-{bcmath,bz2,intl,gd,mbstring,mysql,zip,common}
+         - curl -sS <https://getcomposer.org/installer> | php -- --install-dir=/usr/local/bin --filename=composer
+   pre_build:
+     commands:
+         - cp .env.example .env
+         - composer install
+         - npm install
+   build:
+     commands:
+         - npm run production
+         - php artisan migrate --force
+         - php artisan db:seed
 artifacts:
-  files:
-    
+   files:
+         - '**/*'
+   name: $(date +%Y-%m-%dT%H:%M:%S).zip
+proxy:
+   upload-artifacts: yes
+   logs: yes
