@@ -4,3 +4,4 @@ https://stackoverflow.com/questions/63550063/aws-error-404-not-found-nginx-1-18-
 https://stackoverflow.com/questions/63550063/aws-error-404-not-found-nginx-1-18-0-in-elastic-beanstalk-with-laravel
 
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/ebextensions.html
+hel
