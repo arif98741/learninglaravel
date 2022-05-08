@@ -6,4 +6,4 @@ https://stackoverflow.com/questions/63550063/aws-error-404-not-found-nginx-1-18-
 https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/ebextensions.html
 
 
-this is dmo
+this is dmosdf
